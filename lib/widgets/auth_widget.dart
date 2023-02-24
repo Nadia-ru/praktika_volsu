@@ -7,7 +7,22 @@ class AuthWidget extends StatefulWidget {
   State<AuthWidget> createState() => _AuthWidgetState();
 }
 
+final _emailTextController = TextEditingController();
+final _passwordTextController = TextEditingController();
+final _phoneTextController = TextEditingController();
+
 class _AuthWidgetState extends State<AuthWidget> {
+
+  void _auth() {
+    final email = _emailTextController.text;
+    final password = _passwordTextController.text;
+    final phone = _phoneTextController.text;
+    if(email=='login' && password =='login' && phone=='88005553535'){
+      print('login');
+    }else{
+      print('error');
+    }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -25,7 +40,7 @@ class _AuthWidgetState extends State<AuthWidget> {
           ),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: _auth,
               child: const Text("Помощь",
                   style: TextStyle(
                     fontSize: 16,
@@ -63,7 +78,7 @@ class _AuthWidgetState extends State<AuthWidget> {
                       borderRadius: BorderRadius.circular(12.0),
                     )),
                   ),
-                  onPressed: () {},
+                  onPressed: _auth,
                   child: const Text('Дальше')),
             )
           ],
@@ -81,6 +96,7 @@ class _FormWidgetEmail extends StatefulWidget {
 }
 
 class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
+
   @override
   Widget build(BuildContext context) {
     const textStylePol = TextStyle(
@@ -88,9 +104,11 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
     const textStyleStart = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xFF52637A));
     return Column(
-      children: const [
+      children: [
         TextField(
-          decoration: InputDecoration(
+          controller: _emailTextController,
+          decoration: const InputDecoration(
+
               hintText: 'Введите почту',
               hintStyle: textStyleStart,
               border: OutlineInputBorder(
@@ -98,13 +116,18 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
                   borderSide: BorderSide(color: Color(0xFFE3E7EC), width: 1.0)),
               contentPadding: EdgeInsets.symmetric(horizontal: 12)),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         TextField(
-          decoration: InputDecoration(
+          controller: _passwordTextController,
+          obscureText: true,
+          enableSuggestions: false,
+          autocorrect: false,
+          decoration: const InputDecoration(
               hintText: 'Введите пароль',
               hintStyle: textStyleStart,
+
               suffixIcon: Icon(Icons.remove_red_eye_rounded),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -129,8 +152,9 @@ class _FormWidgetPhoneState extends State<_FormWidgetPhone> {
   Widget build(BuildContext context) {
     const textStyleStart = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xFF52637A));
-    return   const TextField(
-      decoration: InputDecoration(
+    return  TextField(
+      controller: _phoneTextController,
+      decoration: const InputDecoration(
           hintText: 'Введите номер телефона',
           hintStyle: textStyleStart,
           border: OutlineInputBorder(
@@ -140,7 +164,6 @@ class _FormWidgetPhoneState extends State<_FormWidgetPhone> {
     );
   }
 }
-
 
 class _RadioButton extends StatefulWidget {
   const _RadioButton({Key? key}) : super(key: key);
@@ -155,7 +178,6 @@ class _RadioButtonState extends State<_RadioButton> {
 
   Widget CustomRadioButton(String text, int index) {
     return Expanded(
-
       child: SizedBox(
         height: 40,
         child: OutlinedButton(
@@ -164,16 +186,16 @@ class _RadioButtonState extends State<_RadioButton> {
               value = index;
             });
           },
-
-          style: OutlinedButton.styleFrom(side: BorderSide.none,
-            backgroundColor: (value == index) ? const Color(0xFFD2E3F7) : Colors.transparent,
-            padding: const EdgeInsets.all(8.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
-          ),
-
+          style: OutlinedButton.styleFrom(
+              side: BorderSide.none,
+              backgroundColor: (value == index)
+                  ? const Color(0xFFD2E3F7)
+                  : Colors.transparent,
+              padding: const EdgeInsets.all(8.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12))),
           child: Text(
             text,
-
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -189,7 +211,6 @@ class _RadioButtonState extends State<_RadioButton> {
   @override
   Widget build(BuildContext context) {
     return Row(
-
       children: <Widget>[
         CustomRadioButton("Номер телефона", 1),
         CustomRadioButton("Почта", 2),
