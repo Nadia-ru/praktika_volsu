@@ -11,21 +11,30 @@ final _emailTextController = TextEditingController();
 final _passwordTextController = TextEditingController();
 final _phoneTextController = TextEditingController();
 
-class _AuthWidgetState extends State<AuthWidget> {
+String? errorText = null;
 
+class _AuthWidgetState extends State<AuthWidget> {
   void _auth() {
     final email = _emailTextController.text;
     final password = _passwordTextController.text;
     final phone = _phoneTextController.text;
-    if(email=='login' && password =='login' && phone=='88005553535'){
+    if (email == 'login' && password == 'login' && phone == '88005553535') {
+      errorText = null;
       print('login');
-    }else{
+    } else {
+      if (email != 'login') {
+        errorText = 'Пожалуйста, измените почту и повторите попытку';
+      } else if (password != 'login') {
+        errorText = 'Неверный пароль, введите корректные данные';
+      } else if (phone != '88005553535') {
+        errorText = 'Пожалуйста, измените номер телефона и повторите попытку';
+      }
       print('error');
     }
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -56,7 +65,9 @@ class _AuthWidgetState extends State<AuthWidget> {
             const SizedBox(height: 80),
             const _RadioButton(),
             const SizedBox(height: 8),
+            // if(_formEmail==true)
             const _FormWidgetEmail(),
+            // else
             const _FormWidgetPhone(),
             const SizedBox(height: 24),
             SizedBox(
@@ -73,7 +84,7 @@ class _AuthWidgetState extends State<AuthWidget> {
                       fontWeight: FontWeight.w400,
                     )),
                     padding: MaterialStateProperty.all(
-                        EdgeInsets.symmetric(vertical: 16.0)),
+                        const EdgeInsets.symmetric(vertical: 16.0)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     )),
@@ -96,7 +107,6 @@ class _FormWidgetEmail extends StatefulWidget {
 }
 
 class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
-
   @override
   Widget build(BuildContext context) {
     const textStylePol = TextStyle(
@@ -108,7 +118,6 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
         TextField(
           controller: _emailTextController,
           decoration: const InputDecoration(
-
               hintText: 'Введите почту',
               hintStyle: textStyleStart,
               border: OutlineInputBorder(
@@ -127,7 +136,6 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
           decoration: const InputDecoration(
               hintText: 'Введите пароль',
               hintStyle: textStyleStart,
-
               suffixIcon: Icon(Icons.remove_red_eye_rounded),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -152,7 +160,7 @@ class _FormWidgetPhoneState extends State<_FormWidgetPhone> {
   Widget build(BuildContext context) {
     const textStyleStart = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xFF52637A));
-    return  TextField(
+    return TextField(
       controller: _phoneTextController,
       decoration: const InputDecoration(
           hintText: 'Введите номер телефона',
@@ -175,6 +183,7 @@ class _RadioButton extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _RadioButtonState extends State<_RadioButton> {
   int value = 1;
+  bool? _formEmail = true;
 
   Widget CustomRadioButton(String text, int index) {
     return Expanded(
@@ -184,6 +193,7 @@ class _RadioButtonState extends State<_RadioButton> {
           onPressed: () {
             setState(() {
               value = index;
+              _formEmail = (value == 1) ? true : false;
             });
           },
           style: OutlinedButton.styleFrom(
@@ -212,8 +222,8 @@ class _RadioButtonState extends State<_RadioButton> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        CustomRadioButton("Номер телефона", 1),
-        CustomRadioButton("Почта", 2),
+        CustomRadioButton("Почта", 1),
+        CustomRadioButton("Номер телефона", 2),
       ],
     );
   }
