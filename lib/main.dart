@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/main_screen/main_screen_widget.dart';
 
 import 'widgets/auth/auth_widget.dart';
 
@@ -20,6 +21,11 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color(0xFFF6F8FB),
           appBarTheme: const AppBarTheme(toolbarHeight: 56)),
       home: const AuthWidget(),
+      routes: {
+        '/' :(context) => const AuthWidget(),
+        '/main_screen' :(context) => const MainScreenWidget(),
+
+      },
     );
   }
 }

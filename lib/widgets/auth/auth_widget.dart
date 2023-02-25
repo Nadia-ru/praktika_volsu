@@ -22,7 +22,7 @@ class _AuthWidgetState extends State<AuthWidget> {
     final phone = _phoneTextController.text;
     if (email == 'login' && password == 'login' && phone == '88005553535') {
       errorText = null;
-      print('login');
+
     } else {
       if (email != 'login') {
         errorText = 'Пожалуйста, измените почту и повторите попытку';
