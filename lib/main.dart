@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/auth_widget.dart';
+import 'widgets/auth/auth_widget.dart';
 
 void main() {
   runApp(const MyApp());
