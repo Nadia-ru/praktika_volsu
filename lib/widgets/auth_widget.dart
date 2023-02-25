@@ -11,9 +11,11 @@ final _emailTextController = TextEditingController();
 final _passwordTextController = TextEditingController();
 final _phoneTextController = TextEditingController();
 
-String? errorText = null;
 
 class _AuthWidgetState extends State<AuthWidget> {
+
+  String? errorText =null;
+
   void _auth() {
     final email = _emailTextController.text;
     final password = _passwordTextController.text;
@@ -24,6 +26,7 @@ class _AuthWidgetState extends State<AuthWidget> {
     } else {
       if (email != 'login') {
         errorText = 'Пожалуйста, измените почту и повторите попытку';
+        print('error login');
       } else if (password != 'login') {
         errorText = 'Неверный пароль, введите корректные данные';
       } else if (phone != '88005553535') {
@@ -35,6 +38,7 @@ class _AuthWidgetState extends State<AuthWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final errorText = this.errorText;
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -62,7 +66,24 @@ class _AuthWidgetState extends State<AuthWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            const SizedBox(height: 80),
+            if (errorText != null)...[
+              ColoredBox(
+                color: const Color(0xFFF4E5E3),
+                child: SizedBox(
+                    height: 64,
+                    child: Text(
+                        errorText,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFFE6360F),
+                          fontWeight: FontWeight.w400,
+                        )
+                    )),
+              ),
+            const SizedBox(
+              height: 64,
+            )]
+            else...[ const SizedBox(height: 80)],
             const _RadioButton(),
             const SizedBox(height: 8),
             // if(_formEmail==true)
@@ -76,9 +97,9 @@ class _AuthWidgetState extends State<AuthWidget> {
               child: TextButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(const Color(0xFF136DEC)),
+                    MaterialStateProperty.all(const Color(0xFF136DEC)),
                     foregroundColor:
-                        MaterialStateProperty.all(const Color(0xFFFFFFFF)),
+                    MaterialStateProperty.all(const Color(0xFFFFFFFF)),
                     textStyle: MaterialStateProperty.all(const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -193,7 +214,7 @@ class _RadioButtonState extends State<_RadioButton> {
           onPressed: () {
             setState(() {
               value = index;
-              _formEmail = (value == 1) ? true : false;
+              //_formEmail = (value == 1) ? true : false;
             });
           },
           style: OutlinedButton.styleFrom(
