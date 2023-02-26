@@ -23,6 +23,7 @@ class _AuthWidgetState extends State<AuthWidget> {
     if (email == 'login' && password == 'login' && phone == '88005553535') {
       errorText = null;
 
+      Navigator.of(context).pushReplacementNamed('/main_screen');
     } else {
       if (email != 'login') {
         errorText = 'Пожалуйста, измените почту и повторите попытку';
@@ -32,7 +33,7 @@ class _AuthWidgetState extends State<AuthWidget> {
       } else if (phone != '88005553535') {
         errorText = 'Пожалуйста, измените номер телефона и повторите попытку';
       }
-      print('error');
+
     }
   }
 

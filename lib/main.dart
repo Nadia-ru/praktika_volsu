@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:praktika/widgets/auth/brand_selection_widget.dart';
+import 'widgets/auth/brand_selection_widget.dart';
 import 'widgets/main_screen/main_screen_widget.dart';
 
 import 'widgets/auth/auth_widget.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/auth/data_input' :(context) => const AuthWidget(),
         '/main_screen' :(context) => const MainScreenWidget(),
       },
-      initialRoute: '/auth/data_input',
+      initialRoute: '/auth',
     );
   }
 }
