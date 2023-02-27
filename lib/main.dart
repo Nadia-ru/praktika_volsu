@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktika/widgets/auth/code_input_widget.dart';
 import 'widgets/auth/brand_selection_widget.dart';
 import 'widgets/main_screen/main_screen_widget.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/auth' :(context) => const BrandSelectionWidget(),
         '/auth/data_input' :(context) => const AuthWidget(),
+        '/auth/code_input' :(context) => const CodeInputWidget(),
         '/main_screen' :(context) => const MainScreenWidget(),
       },
       initialRoute: '/auth',
