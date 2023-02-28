@@ -54,7 +54,7 @@ class _AuthWidgetState extends State<AuthWidget> {
           ),
           actions: [
             TextButton(
-              onPressed: _auth,
+              onPressed:(){},
               child: const Text("Помощь",
                   style: TextStyle(
                     fontSize: 16,
@@ -155,6 +155,7 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
           obscureText: true,
           enableSuggestions: false,
           autocorrect: false,
+          keyboardType: TextInputType.number,
           decoration: const InputDecoration(
               hintText: 'Введите пароль',
               hintStyle: textStyleStart,
