@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/auth/splash_screen' :(context) => const SplashScreenWidget(),
         '/main_screen' :(context) => const MainScreenWidget(),
       },
-      initialRoute: '/auth/code_input',
+      initialRoute: '/main_screen',
     );
   }
 }
