@@ -23,7 +23,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget> {
         _fieldFour.text;
    if(srv=="0000")  {
      errorText = null;
-   Navigator.of(context).pushNamed('/main_screen');
+   Navigator.of(context).pushReplacementNamed('/auth/splash_screen');
   } else {
      errorText ="Неверный код, введите корректные данные";
   }
