@@ -20,7 +20,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           fontFamily: "Inter",
-
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            selectedItemColor: Color(0xFF136DEC),
+            unselectedItemColor: Color(0xFF132339),
+           selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
+          ),
           backgroundColor: const Color(0xFFF6F8FB),
           appBarTheme: const AppBarTheme(toolbarHeight: 56)),
       routes: {
