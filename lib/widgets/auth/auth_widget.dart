@@ -216,7 +216,7 @@ class _RadioButtonState extends State<_RadioButton> {
           onPressed: () {
             setState(() {
               value = index;
-              //_formEmail = (value == 1) ? true : false;
+              _formEmail = (value == 1) ? true : false;
             });
           },
           style: OutlinedButton.styleFrom(
