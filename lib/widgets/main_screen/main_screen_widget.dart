@@ -40,51 +40,65 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        actionsIconTheme: const IconThemeData(
-            color: Colors.white
-        ),
+        actionsIconTheme: const IconThemeData(color: Colors.white),
         actions: [
-          IconButton(
-              onPressed: () {},
-              iconSize: 24,
-             // padding: EdgeInsets.all(4.0),
-              icon: Container(
-                  decoration: const BoxDecoration(
-                      color: Color(0xFFB7BEC8),
-                    shape: BoxShape.circle,
-                    //more than 50% of width makes circle
-                  ),
-                  child: const Icon(
+          const SizedBox(
+              //<-- SEE HERE
+              width: 24,
+              height: 24,
+              child: FloatingActionButton(
+                  //<-- SEE HERE
+                  backgroundColor: Color(0xFFB7BEC8),
+                  disabledElevation: 0,
+                  hoverElevation: 0,
+                  onPressed: null,
+                  child: Icon(
                     AppBarIcon.uv,
                     size: 16,
+                    color: Colors.white,
                   ))),
-          IconButton(
-              onPressed: () {},
-              iconSize: 32,
-              icon: Container(
-                  decoration: const BoxDecoration(
-                      color: Color(0xFFB7BEC8),
-                    shape: BoxShape.circle,
-                    //more than 50% of width makes circle
+          const SizedBox(
+            width: 8,
+          ),
+          const SizedBox(
+            //<-- SEE HERE
+            width: 32,
+            height: 32,
+            child: FloatingActionButton(
+                //<-- SEE HERE
+                backgroundColor: Color(0xFFB7BEC8),
+                disabledElevation: 0,
+                hoverElevation: 0,
+                onPressed: null,
+                child: Icon(
+                  AppBarIcon.pm,
+                  size: 26,
+                )),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: ElevatedButton(
+                onPressed: null,
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(32, 32),
+                  disabledBackgroundColor: const Color(0xFFB7BEC8),
+                  padding: const EdgeInsets.all(7.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
-                  child: const Icon(
-                    AppBarIcon.pm,
-                    size: 26,
-                  ))),
-          IconButton(
-              onPressed: () {},
-              iconSize: 32,
-              icon: Container(
-
-                  decoration: const BoxDecoration(
-                      color: Color(0xFFB7BEC8),
-                    shape: BoxShape.circle,
-                    //more than 50% of width makes circle
-                  ),
-                  child: const Icon(
-                    AppBarIcon.brands,
-                    size: 20,
-                  ))),
+                ),
+                child: const Icon(
+                  AppBarIcon.brands,
+                  size: 20,
+                  color: Colors.white,
+                )),
+          ),
+          const SizedBox(
+            width: 16,
+          )
         ],
       ),
       body: Center(
