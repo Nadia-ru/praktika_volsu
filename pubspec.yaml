@@ -79,6 +79,9 @@ flutter:
     - family: CustomIcon
       fonts:
         - asset: fonts/CustomIcon.ttf
+    - family: AppBarIcon
+      fonts:
+        - asset: fonts/AppBarIcon.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

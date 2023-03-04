@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/news/news_widget.dart';
 import 'widgets/auth/splash_screen_widget.dart';
 import 'widgets/auth/code_input_widget.dart';
 import 'widgets/auth/brand_selection_widget.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/auth/code_input' :(context) => const CodeInputWidget(),
         '/auth/splash_screen' :(context) => const SplashScreenWidget(),
         '/main_screen' :(context) => const MainScreenWidget(),
+        '/news' :(context) => const NewsWidget(),
       },
       initialRoute: '/main_screen',
     );
