@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:praktika/widgets/icons/app_bar_icon_icons.dart';
-import '/widgets/news/news_widget.dart';
+import 'package:praktika/widgets/news/news_widget.dart';
 import '../icons/custom_icon_icons.dart';
 
 class MainScreenWidget extends StatefulWidget {
@@ -101,8 +101,11 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
           )
         ],
       ),
-      body: Center(
-        child: _widgetOptions[_selectedTab],
+      body: SizedBox.expand(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: _widgetOptions[_selectedTab],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
