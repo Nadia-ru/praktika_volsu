@@ -13,8 +13,8 @@ final _phoneTextController = TextEditingController();
 
 
 class _AuthWidgetState extends State<AuthWidget> {
-
-  String? errorText =null;
+  String? errorText = null;
+  bool showFirstWidget = true;
 
   void _auth() {
     final email = _emailTextController.text;
@@ -33,7 +33,6 @@ class _AuthWidgetState extends State<AuthWidget> {
       } else if (phone != '88005553535') {
         errorText = 'Пожалуйста, измените номер телефона и повторите попытку';
       }
-
     }
   }
 
@@ -54,7 +53,7 @@ class _AuthWidgetState extends State<AuthWidget> {
           ),
           actions: [
             TextButton(
-              onPressed:(){},
+              onPressed: () {},
               child: const Text("Помощь",
                   style: TextStyle(
                     fontSize: 16,
@@ -67,30 +66,41 @@ class _AuthWidgetState extends State<AuthWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            if (errorText != null)...[
+            if (errorText != null) ...[
               ColoredBox(
                 color: const Color(0xFFF4E5E3),
                 child: SizedBox(
                     height: 64,
-                    child: Text(
-                        errorText,
+                    child: Text(errorText,
                         style: const TextStyle(
                           fontSize: 16,
                           color: Color(0xFFE6360F),
                           fontWeight: FontWeight.w400,
-                        )
-                    )),
+                        ))),
               ),
-            const SizedBox(
-              height: 64,
-            )]
-            else...[ const SizedBox(height: 80)],
-            const _RadioButton(),
-            const SizedBox(height: 8),
-            // if(_formEmail==true)
-            const _FormWidgetEmail(),
-            // else
-            const _FormWidgetPhone(),
+              const SizedBox(
+                height: 64,
+              )
+            ] else ...[
+              const SizedBox(height: 80)
+            ],
+           _RadioButton(),
+           // _RadioButton(onTap: (value) {
+           //    setState(() {
+           //      if(value==1){
+           //        showFirstWidget=true;
+           //      }else{
+           //        showFirstWidget=false;
+           //      }
+           //    });
+           //  }),
+           //  const SizedBox(height: 8),
+           //
+           //  if (showFirstWidget)
+           //    const _FormWidgetEmail()
+           //  else
+           //    const _FormWidgetPhone(),
+
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
@@ -98,9 +108,9 @@ class _AuthWidgetState extends State<AuthWidget> {
               child: TextButton(
                   style: ButtonStyle(
                     backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF136DEC)),
+                        MaterialStateProperty.all(const Color(0xFF136DEC)),
                     foregroundColor:
-                    MaterialStateProperty.all(const Color(0xFFFFFFFF)),
+                        MaterialStateProperty.all(const Color(0xFFFFFFFF)),
                     textStyle: MaterialStateProperty.all(const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -203,11 +213,11 @@ class _RadioButton extends StatefulWidget {
   State<_RadioButton> createState() => _RadioButtonState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
+
 class _RadioButtonState extends State<_RadioButton> {
   int value = 1;
-  bool? _formEmail = true;
-
+  bool showFirstWidget=true;
+  late final void Function(int) onTap;
   Widget CustomRadioButton(String text, int index) {
     return Expanded(
       child: SizedBox(
@@ -216,7 +226,12 @@ class _RadioButtonState extends State<_RadioButton> {
           onPressed: () {
             setState(() {
               value = index;
-              _formEmail = (value == 1) ? true : false;
+
+              if(value==1){
+                showFirstWidget=true;
+              }else{
+                showFirstWidget=false;
+              }
             });
           },
           style: OutlinedButton.styleFrom(
@@ -243,10 +258,20 @@ class _RadioButtonState extends State<_RadioButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        CustomRadioButton("Почта", 1),
-        CustomRadioButton("Номер телефона", 2),
+    return Column(
+      children: [
+        Row(
+          children: <Widget>[
+            CustomRadioButton("Почта", 1),
+            CustomRadioButton("Номер телефона", 2),
+
+          ],
+        ),
+        const SizedBox(height: 8),
+        if (showFirstWidget)
+          const _FormWidgetEmail()
+        else
+          const _FormWidgetPhone(),
       ],
     );
   }

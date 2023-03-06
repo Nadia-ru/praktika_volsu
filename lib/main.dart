@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktika/widgets/news/one_news_widget.dart';
 import 'widgets/news/news_widget.dart';
 import 'widgets/auth/splash_screen_widget.dart';
 import 'widgets/auth/code_input_widget.dart';
@@ -27,7 +28,9 @@ class MyApp extends StatelessWidget {
            selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
           ),
           backgroundColor: const Color(0xFFF6F8FB),
-          appBarTheme: const AppBarTheme(toolbarHeight: 56)),
+          appBarTheme: const AppBarTheme(toolbarHeight: 56,  iconTheme: IconThemeData(
+            color: Color(0xFF132339), //change your color here
+          ),)),
       routes: {
         '/auth' :(context) => const BrandSelectionWidget(),
         '/auth/data_input' :(context) => const AuthWidget(),
@@ -35,8 +38,9 @@ class MyApp extends StatelessWidget {
         '/auth/splash_screen' :(context) => const SplashScreenWidget(),
         '/main_screen' :(context) => const MainScreenWidget(),
         '/news' :(context) => const NewsWidget(),
+        '/news/one' :(context) => const OneNewsWidget(),
       },
-      initialRoute: '/main_screen',
+      initialRoute: '/auth/data_input',
     );
   }
 }
