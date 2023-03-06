@@ -3,6 +3,7 @@ import 'package:praktika/widgets/applications/applications_widget.dart';
 import 'package:praktika/widgets/icons/app_bar_icon_icons.dart';
 import 'package:praktika/widgets/news/news_widget.dart';
 import '../icons/custom_icon_icons.dart';
+import 'main_start_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('main'),
+    MainStartWidget(),
     ApplicationWidget(),
     NewsWidget(),
   ];
