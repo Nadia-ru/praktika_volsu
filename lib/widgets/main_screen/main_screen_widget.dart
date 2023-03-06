@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktika/widgets/applications/applications_widget.dart';
 import 'package:praktika/widgets/icons/app_bar_icon_icons.dart';
 import 'package:praktika/widgets/news/news_widget.dart';
 import '../icons/custom_icon_icons.dart';
@@ -22,7 +23,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     Text('main'),
-    Text('prl'),
+    ApplicationWidget(),
     NewsWidget(),
   ];
 
@@ -40,7 +41,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        actionsIconTheme: const IconThemeData(color: Colors.white),
         actions: [
           const SizedBox(
               //<-- SEE HERE

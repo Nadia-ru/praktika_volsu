@@ -14,6 +14,7 @@ class _BrandSelectionWidgetState extends State<BrandSelectionWidget> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),

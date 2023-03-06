@@ -34,6 +34,9 @@ class _CodeInputWidgetState extends State<CodeInputWidget> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          iconTheme: const IconThemeData(
+              color: Color(0xFF132339)
+          ),
           title: const Text(
             "Авторизация",
             style: TextStyle(

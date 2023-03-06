@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
            selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)
           ),
           backgroundColor: const Color(0xFFF6F8FB),
-          appBarTheme: const AppBarTheme(toolbarHeight: 56,  iconTheme: IconThemeData(
-            color: Color(0xFF132339), //change your color here
-          ),)),
+          appBarTheme: const AppBarTheme(toolbarHeight: 56,
+
+          )),
       routes: {
         '/auth' :(context) => const BrandSelectionWidget(),
         '/auth/data_input' :(context) => const AuthWidget(),
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/news' :(context) => const NewsWidget(),
         '/news/one' :(context) => const OneNewsWidget(),
       },
-      initialRoute: '/auth/data_input',
+      initialRoute: '/main_screen',
     );
   }
 }

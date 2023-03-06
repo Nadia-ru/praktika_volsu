@@ -14,7 +14,9 @@ class _OneNewsWidgetState extends State<OneNewsWidget> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-      ),
+        iconTheme: const IconThemeData(
+          color: Color(0xFF132339)
+      ),),
       body: Column(
         children: [
       Flex(direction: Axis.vertical,

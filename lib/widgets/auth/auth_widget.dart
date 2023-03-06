@@ -43,6 +43,9 @@ class _AuthWidgetState extends State<AuthWidget> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          iconTheme: const IconThemeData(
+              color: Color(0xFF132339)
+          ),
           title: const Text(
             "Авторизация",
             style: TextStyle(
@@ -84,22 +87,7 @@ class _AuthWidgetState extends State<AuthWidget> {
             ] else ...[
               const SizedBox(height: 80)
             ],
-           _RadioButton(),
-           // _RadioButton(onTap: (value) {
-           //    setState(() {
-           //      if(value==1){
-           //        showFirstWidget=true;
-           //      }else{
-           //        showFirstWidget=false;
-           //      }
-           //    });
-           //  }),
-           //  const SizedBox(height: 8),
-           //
-           //  if (showFirstWidget)
-           //    const _FormWidgetEmail()
-           //  else
-           //    const _FormWidgetPhone(),
+           const _RadioButton(),
 
             const SizedBox(height: 24),
             SizedBox(
@@ -165,7 +153,7 @@ class _FormWidgetStateEmail extends State<_FormWidgetEmail> {
           obscureText: true,
           enableSuggestions: false,
           autocorrect: false,
-          keyboardType: TextInputType.number,
+
           decoration: const InputDecoration(
               hintText: 'Введите пароль',
               hintStyle: textStyleStart,
@@ -195,6 +183,7 @@ class _FormWidgetPhoneState extends State<_FormWidgetPhone> {
         fontSize: 16, fontWeight: FontWeight.w400, color: Color(0xFF52637A));
     return TextField(
       controller: _phoneTextController,
+      keyboardType: TextInputType.number,
       decoration: const InputDecoration(
           hintText: 'Введите номер телефона',
           hintStyle: textStyleStart,
