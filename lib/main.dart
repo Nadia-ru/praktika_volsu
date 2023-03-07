@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/news' :(context) => const NewsWidget(),
         '/news/one' :(context) => const OneNewsWidget(),
       },
-      initialRoute: '/main_screen',
+      initialRoute: '/auth',
     );
   }
 }
